@@ -155,6 +155,7 @@ public class FilteringWebHandler implements WebHandler, ApplicationListener<Refr
 				if (this.index < filters.size()) {
 					GatewayFilter filter = filters.get(this.index);
 					DefaultGatewayFilterChain chain = new DefaultGatewayFilterChain(this, this.index + 1);
+					// 将要执行的过滤器
 					return filter.filter(exchange, chain);
 				}
 				else {

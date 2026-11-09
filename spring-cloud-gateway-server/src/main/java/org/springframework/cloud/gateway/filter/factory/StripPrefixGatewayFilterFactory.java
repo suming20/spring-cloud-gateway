@@ -36,6 +36,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.a
  * before sending it downstream.
  *
  * @author Ryan Baxter
+ * 去除前置路径的filter
  */
 public class StripPrefixGatewayFilterFactory
 		extends AbstractGatewayFilterFactory<StripPrefixGatewayFilterFactory.Config> {

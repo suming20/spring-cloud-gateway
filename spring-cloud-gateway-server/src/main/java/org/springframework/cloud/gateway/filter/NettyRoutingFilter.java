@@ -139,6 +139,7 @@ public class NettyRoutingFilter implements GlobalFilter, Ordered {
 					String host = request.getHeaders().getFirst(HttpHeaders.HOST);
 					headers.add(HttpHeaders.HOST, host);
 				}
+				// 执行发送，基于http协议
 			}).request(method).uri(url).send((req, nettyOutbound) -> {
 				if (log.isTraceEnabled()) {
 					nettyOutbound.withConnection(connection -> log.trace("outbound route: "
@@ -153,6 +154,7 @@ public class NettyRoutingFilter implements GlobalFilter, Ordered {
 				exchange.getAttributes().put(CLIENT_RESPONSE_ATTR, res);
 				exchange.getAttributes().put(CLIENT_RESPONSE_CONN_ATTR, connection);
 
+				// 获取响应结果
 				ServerHttpResponse response = exchange.getResponse();
 				// put headers and status so filters can modify the response
 				HttpHeaders headers = new HttpHeaders();
